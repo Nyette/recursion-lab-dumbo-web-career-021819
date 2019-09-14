@@ -1,5 +1,3 @@
-// Code your solution here!
-
 function printString(myString) {
   console.log(myString[0]);
   if (myString.length > 1) {
@@ -43,21 +41,24 @@ function addUpTo(array, index) {
 
 function maxOf(array) {
   // returns the largest integer in an array
-  let maxNum;
-  if (array.length > 1) {
-    return maxNum = array[0];
-  } else {
-    return maxNum = array[0];
+  if (array.length === 1) {
+    return array[0];
   }
+  let firstNum = array[0];
+  let lastNum = array[array.length - 1];
+  return maxOf(firstNum < lastNum ? array.slice(1) : array.slice(0, -1));
 }
 
-// function includesNumber(array, number) {
-//   // returns 'true' if the number is present in the array
-//   // returns 'false' if the number is not present in the array
-//   if (array.length <= 0) {
-//     return 'false';
-//   } else {
-//     // not an empty array
-//     // we have to compare the number to every element in an array
-//   }
-// }
+function includesNumber(array, number) {
+  if (array.length === 0) {
+    return false;
+  } else {
+    // the array is not empty, so it may contain the number
+    let firstNum = array[0];
+    if (number === firstNum) {
+      return true;
+    } else {
+      return includesNumber(array.slice(1), number);
+    }
+  }
+}
